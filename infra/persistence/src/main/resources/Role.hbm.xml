@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+<hibernate-mapping package="com.hibernate"> 
+<class name="Role" table="role"> 
+    <meta attribute="class-description"> This class contains the person detail. </meta> 
+    <id name="roleID" type="int" column="role_id"> 
+        <generator class="identity"/> 
+    </id> 
+    <property name="role" column="role" type="string"/>
+    
+    <bag name="persons" table="person_role" inverse="true" lazy="true" fetch="select">
+        <key>
+            <column name="role_id" not-null="true" />
+        </key>
+        <many-to-many entity-name="com.hibernate.Person">
+            <column name="person_id"/>
+        </many-to-many>
+    </bag>
+</class> 
+</hibernate-mapping>

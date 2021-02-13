@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+<hibernate-mapping package="com.hibernate"> 
+<class name="Contact" table="contact"> 
+    <meta attribute="class-description"> This class contains the person detail. </meta> 
+    <id name="contactID" type="int" column="contact_id"> 
+        <generator class="identity"/> 
+    </id> 
+    <property name="landLine" column="landline" type="long"/>
+    <property name="mobileNumber" column="mobile_number" type="long"/>
+    <property name="email" column="email" type="string"/>
+    
+    <many-to-one name="person" 
+         class="Person"
+         column="person_id"
+         cascade="all">
+    </many-to-one>
+</class> 
+</hibernate-mapping>

@@ -1,16 +1,43 @@
 package com.hibernate;
 import java.util.*;
+import java.io.*;
 
-public class Role {
-    private List<String> roles = new ArrayList<>();
+public class Role implements Serializable{
+    private int roleID;
     
-    public List<String> addRole(String role) {
-        roles.add(role);
-        return roles;
+    String role;
+    
+    List<Person> persons;
+    
+    public Role() {}
+    
+    public Role(String role) {
+        this.role = role;
     }
     
-    public List<String> deleteRole(String role) {
-        //roles.remove(role);
-        return roles;
+    //Setters
+    public void setRoleID(int roleID) {
+        this.roleID = roleID;
+    }
+    
+    public void setRole(String role) {
+        this.role = role;
+    }
+    
+    public void setPersons(List<Person> persons) {
+        this.persons = persons;
+    }
+    
+    //Getters
+    public int getRoleID() {
+        return roleID;
+    }
+    
+    public String getRole() {
+        return role;
+    }
+    
+    public List<Person> getPersons() {
+        return persons;
     }
 }
